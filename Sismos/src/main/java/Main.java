@@ -28,12 +28,12 @@ public class Main {
         do {
             switch (opcion) {
                 case 1:
-                    int[] arr1 = new int[70];
-                    //llenarArray(arr1);
-                    System.out.println("arreglo 1: "+"["+llenarArray(arr1)+"]");
-                    validador = 1;
+                    double[] arr1 = new double[70];
+                    llenarArray(arr1);
+                    mostrarArray(arr1);
                 case 2:
-
+                    arr1 = new double[70];
+                    mayorSismo(arr1);
                 case 3:
 
                 case 4:
@@ -42,15 +42,31 @@ public class Main {
                     System.err.println("gracias, hasta pronto");
                     validador = 1;
                     break;
-                default:
-                    break;
+                default: validador = 0;
             }
         }while (validador == 0);
     }
 
-    public static double[] llenarArray(int[] arr){
+    private static void mayorSismo(double[] arr) {
+        double[] sismos = arr;
+        double mayor = sismos[0];
+        for (int i = 0; i < sismos.length; i++) {
+            if (sismos[i]>mayor){
+                mayor = sismos[i];
+            }
+        }
+    }
+
+    private static void mostrarArray(double[] arr) {
+        double[] mostrar = arr;
+        for (int i = 0; i < mostrar.length; i++) {
+            System.out.println("["+mostrar[i]+"]");
+        }
+    }
+
+    public static double[] llenarArray(double[] arr){
         System.out.println("se procede a llenar datos");
-        double[] equis = new double[10];
+        double[] equis = new double[arr.length];
         Random rnum = new Random();
         for (int i = 0; i < equis.length; i++) {
             equis[i] = rnum.nextDouble()*9.9+0.0;
